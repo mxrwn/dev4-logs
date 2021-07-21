@@ -18,9 +18,9 @@ const app = express();
 http.Server(app); 
 
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(
-  bodyParser.urlencoded({
+  express.urlencoded({
     // to support URL-encoded bodies
     extended: true
   })
