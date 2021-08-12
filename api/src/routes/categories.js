@@ -21,4 +21,28 @@ router.post('/create', async (req, res) => {
   }
 })
 
+router.put('/update', async (req, res) => {
+  if(req.body.title && req.body.uuid){
+    if(req.body.uuid.length === 36){
+      await pg('categories').where('uuid', req.body.uuid)
+      .update({
+        uuid: req.body.uuid,
+        title: req.body.title
+      })
+      .then(data => {
+        console.log(data);
+        res.sendStatus(200);
+      });
+    }else{
+      res.send({
+          message: 'uuid length need to be at least 36 characters' 
+      })
+    }
+  }else{
+    res.send({
+      message: 'invalid input'
+    })
+  }
+})
+
 module.exports = router;
