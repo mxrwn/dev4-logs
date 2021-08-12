@@ -45,4 +45,19 @@ router.put('/update', async (req, res) => {
   }
 })
 
+router.delete('/delete', async (req, res) => {
+  if(req.body.uuid){
+    if(req.body.uuid.length === 36){
+      await pg('categories').where('uuid', req.body.uuid)
+      .del()
+      .then(() => {
+        res.sendStatus(200)
+      })
+    }else{
+      res.sendStatus(400);
+    }
+  }else{
+    res.sendStatus(400);
+  }
+})
 module.exports = router;
