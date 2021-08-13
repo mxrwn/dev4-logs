@@ -8,7 +8,7 @@ const port = 3000
 
 
 const categories = require('./routes/categories');
-
+const logs = require('./routes/logs');
 
 
 const app = express();
@@ -25,6 +25,7 @@ app.use(
 app.use(morgan('dev'));
 
 app.use('/category', categories);
+app.use('/logs', logs);
 
 app.get('/test', async (req, res) => {
   await pg('categories').insert({uuid: Helpers.generateUUID(), title: 'Life'})
