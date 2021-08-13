@@ -5,8 +5,7 @@ services:
     container_name: api
     build: ./api
     environment:
-      PG_CONNECTION_STRING: postgres://example:example@store:5432/test
-
+      PG_CONNECTION_STRING: postgres://example:example@logs:5432/logs
     ports:
       - 3000:3000
     volumes:
@@ -14,13 +13,13 @@ services:
 
 
   db:
-    container_name: store   
+    container_name: logs   
     image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: example
       POSTGRES_USER: example
-      POSTGRES_DB: test
+      POSTGRES_DB: logs
       POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - 5432:5432
