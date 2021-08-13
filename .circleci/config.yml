@@ -5,14 +5,19 @@ orbs:
   node: circleci/node@4.1
 
 
+
 jobs:
-  build-and-test: 
+  
+  build-and-test:
+    parameters:
+      app-dir:
+        default: ~/api
+        type: string
     working_directory: ~/api/
     docker:
       - image: cimg/node:15.1
     steps:
       - checkout
-      
       - node/install-packages
       - setup_remote_docker
       - run: |
@@ -30,7 +35,7 @@ jobs:
 
       - run:
           name: Run tests
-          command: npm test
+          command: npm test   
 
 workflows:
   sample: 
