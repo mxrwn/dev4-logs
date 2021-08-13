@@ -9,6 +9,7 @@ jobs:
   build-and-test:  
     docker:
       - image: cimg/node:15.1
+    working_directory: ~/api
     steps:
       - checkout
       - node/install-packages
