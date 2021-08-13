@@ -21,7 +21,6 @@ jobs:
     steps:
       - checkout
       - run: cd api && npm install
-      - run: cd api && npm test
       - setup_remote_docker
       - run: |
           curl -L https://github.com/docker/compose/releases/download/1.25.3/docker
@@ -36,9 +35,9 @@ jobs:
           docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
           docker push crshlab/cicd_starter:$TAG
 
-      - run:
-          name: Run tests
-          command: npm test   
+      # - run:
+      #     name: Run tests
+      #     command: npm test   
 
 workflows:
   sample: 
