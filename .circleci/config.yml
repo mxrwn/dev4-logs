@@ -6,10 +6,10 @@ orbs:
 
 
 jobs:
-  build-and-test:  
+  build-and-test: 
+    working_directory: ~/api/
     docker:
       - image: cimg/node:15.1
-    working_directory: ~/api/
     steps:
       - checkout
       - node/install-packages
