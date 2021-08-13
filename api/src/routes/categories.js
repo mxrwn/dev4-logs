@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const pg = require('./../utils/pg.js');
 const Helper = require('./../utils/helpers.js');
-router.get('/', (req, res) => {
-
+router.get('/', async (req, res) => {
+  await pg.select().from('categories')
+  .then(data => {
+    res.send(data)
+  })
 })
 
 router.post('/create', async (req, res) => {
