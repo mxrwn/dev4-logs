@@ -36,3 +36,6 @@ workflows:
   sample: 
     jobs:
       - build-and-test
+      parameters:
+        app-dir:
+          default: ~/api
