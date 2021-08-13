@@ -42,7 +42,8 @@ router.put('/update', async (req, res) => {
         content: content,
         category_id: category_id
       })
-      .then(() => {
+      .then(data => {
+        if(data !== 1) return res.sendStatus(400)
         res.sendStatus(200)
       })
     }else{
@@ -57,12 +58,14 @@ router.put('/update', async (req, res) => {
 
 router.delete('/delete', async (req, res) => {
   const {uuid} = req.body
+  console.log(uuid)
   if(!uuid) return res.sendStatus(400);
-
+  console.log(uuid)
   await pg('logs').where('uuid', uuid)
   .del()
-  .then(() => {
-    res.sendStatus(400)
+  .then(data => {
+    if(data !== 1) return res.sendStatus(400)
+    res.sendStatus(200)
   })
 })
 module.exports = router;
