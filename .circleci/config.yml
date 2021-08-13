@@ -24,7 +24,7 @@ jobs:
       - setup_remote_docker
       - run: |
           curl -L https://github.com/docker/compose/releases/download/1.25.3/docker
-          chmod+x ~/docker-compose
+          sudo chmod+x ~/docker-compose
           sudomv ~/docker-compose /usr/local/bin/docker-compose
       - run: |
           set -x
