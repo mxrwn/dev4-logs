@@ -35,3 +35,5 @@ workflows:
   sample: 
     jobs:
       - build-and-test
+      - node/test:
+          app-dir: "~/api/"
