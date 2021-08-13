@@ -38,7 +38,7 @@ router.put('/update', async (req, res) => {
       });
     }else{
       res.send({
-          message: 'uuid length need to be at least 36 characters' 
+          message: 'uuid length need to be at least 36 characters.' 
       })
     }
   }else{
