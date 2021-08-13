@@ -20,7 +20,8 @@ jobs:
       - image: cimg/node:15.1
     steps:
       - checkout
-      - node/install-packages
+      - run: cd api && npm install
+      - run: cd api && npm test
       - setup_remote_docker
       - run: |
           curl -L https://github.com/docker/compose/releases/download/1.25.3/docker
