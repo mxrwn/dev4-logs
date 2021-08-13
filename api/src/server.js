@@ -6,7 +6,9 @@ const Helpers = require('./utils/helpers.js');
 const pg = require('./utils/pg.js');
 const port = 3000
 
+
 const categories = require('./routes/categories');
+
 
 
 const app = express();
@@ -32,21 +34,17 @@ app.get('/test', async (req, res) => {
 })
 
 app.get('/', async (req, res) => {
-  const result = await pg
-    .select(['uuid', 'title', 'created_at'])
-    .from('story')
-  res.json({
-      res: result
-  })
+  
 })
 
+
 app.get('/logs/:uuid', async (req, res) => {
+
   
 })
 
 
 async function initialiseTables() {
-  
     await pg.schema.hasTable('categories').then(async (exists) => {
       if (!exists) {
         await pg.schema
