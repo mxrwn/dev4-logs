@@ -5,7 +5,9 @@ orbs:
   node: circleci/node@4.1
 
 
+
 jobs:
+  
   build-and-test:
     parameters:
       app-dir:
@@ -35,7 +37,7 @@ jobs:
 
       - run:
           name: Run tests
-          command: npm test
+          command: npm test   
 
 workflows:
   sample: 
