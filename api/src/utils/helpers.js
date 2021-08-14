@@ -8,15 +8,19 @@ const Helpers = {
      return uuid;
   },
   checkCategoryId: async (id) => {
-    return await pg.select().from('categories').where('id', id)
-    .then(data => {
-      const [category] = data;
-      if(category){
-        return true
-      }
-      return false
-    })
-    return false
+    if(typeof id === 'number'){
+      return await pg.select().from('categories').where('id', id)
+      .then(data => {
+        const [category] = data;
+        if(category){
+          return true
+        }
+        return false
+      })
+    }else{
+      return false;
+    }
+    
   }
 }
 
