@@ -28,10 +28,7 @@ app.use('/category', categories);
 app.use('/logs', logs);
 
 app.get('/test', async (req, res) => {
-  await pg('categories').insert({uuid: Helpers.generateUUID(), title: 'Life'})
-  .then((data) => res.send({
-    message: data
-  }));
+  res.sendStatus(200);
 })
 
 app.get('/', async (req, res) => {
@@ -56,10 +53,10 @@ async function initialiseTables() {
             table.timestamps(true, true);
           })
           .then(async () => {
-            console.log('created table categories');
+            
           });
       }else{
-        console.log('Category table already exists');
+        
       }
     });
 
@@ -75,10 +72,10 @@ async function initialiseTables() {
             table.timestamps(true, true);
           })
           .then(async () => {
-            console.log('created table logs');
+           
           });
       }else{
-        console.log('Logs table already exists');
+        
       }
     });
 }
